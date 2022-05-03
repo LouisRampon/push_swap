@@ -1,33 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lorampon <lorampon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/28 17:13:53 by lorampon          #+#    #+#             */
-/*   Updated: 2022/05/03 15:42:18 by lorampon         ###   ########.fr       */
+/*   Created: 2021/09/09 15:40:05 by lorampon          #+#    #+#             */
+/*   Updated: 2022/05/03 13:16:17 by lorampon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "../includes/libft.h"
 
-int main (int argc, char **argv)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-	t_list	*stack1;
-	t_list	*stack2;
+	char	*str;
+	size_t	i;
+	size_t	j;
 
-	if (checkerror(argc, argv))
+	i = 0;
+	if (!s1 || !s2)
 		return (0);
-	stack1 = createstack(argc, argv);
-	stack2 = NULL;
-	reverse(&stack1);
-	while (stack1->next)
+	str = malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
+	if (!str)
+		return (0);
+	while (s1[i])
 	{
-		ft_printf("%d \n", *(int *)stack1->content);
-		stack1 = stack1->next;
+		str[i] = s1[i];
+		i++;
 	}
-	ft_printf("%d \n", *(int *)stack1->content);
-	return (0);
+	j = 0;
+	while (s2[j])
+	{
+		str[i] = s2[j];
+		i++;
+		j++;
+	}
+	str[i] = '\0';
+	return (str);
 }
-

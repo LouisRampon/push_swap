@@ -1,33 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lorampon <lorampon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/28 17:13:53 by lorampon          #+#    #+#             */
-/*   Updated: 2022/05/03 15:42:18 by lorampon         ###   ########.fr       */
+/*   Created: 2021/09/06 11:44:10 by lorampon          #+#    #+#             */
+/*   Updated: 2022/05/03 13:14:35 by lorampon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "../includes/libft.h"
 
-int main (int argc, char **argv)
+int	ft_atoi(const char *str)
 {
-	t_list	*stack1;
-	t_list	*stack2;
+	int			i;
+	int			j;
+	long int	n;
 
-	if (checkerror(argc, argv))
+	i = 0;
+	n = 0;
+	j = 1;
+	while ((str[i] > 8 && str[i] < 14) || str[i] == ' ')
+		i++;
+	if (!ft_isdigit(str[i]) && !(str[i] == '-') && !(str[i] == '+'))
 		return (0);
-	stack1 = createstack(argc, argv);
-	stack2 = NULL;
-	reverse(&stack1);
-	while (stack1->next)
+	if (str[i] == '-' || str[i] == '+')
 	{
-		ft_printf("%d \n", *(int *)stack1->content);
-		stack1 = stack1->next;
+		if (str[i] == '-')
+			j = -1;
+		i++;
 	}
-	ft_printf("%d \n", *(int *)stack1->content);
-	return (0);
+	while (str[i] && ft_isdigit(str[i]))
+	{
+		n = n * 10 + (str[i] - '0');
+		i++;
+	}
+	n = n * j;
+	return (n);
 }
-

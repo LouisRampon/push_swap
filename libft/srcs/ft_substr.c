@@ -1,33 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lorampon <lorampon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/28 17:13:53 by lorampon          #+#    #+#             */
-/*   Updated: 2022/05/03 15:42:18 by lorampon         ###   ########.fr       */
+/*   Created: 2021/12/01 11:58:24 by lorampon          #+#    #+#             */
+/*   Updated: 2022/05/03 13:16:40 by lorampon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "../includes/libft.h"
 
-int main (int argc, char **argv)
+char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	t_list	*stack1;
-	t_list	*stack2;
+	char	*str;
+	size_t	i;
 
-	if (checkerror(argc, argv))
+	i = 0;
+	if (!s || start > ft_strlen(s))
+		return (ft_calloc(1, 1));
+	if (ft_strlen(s) - start < len)
+		len = ft_strlen(s) - start;
+	str = malloc(sizeof(char) * (len + 1));
+	if (!str)
 		return (0);
-	stack1 = createstack(argc, argv);
-	stack2 = NULL;
-	reverse(&stack1);
-	while (stack1->next)
+	while (i < len && s[start])
 	{
-		ft_printf("%d \n", *(int *)stack1->content);
-		stack1 = stack1->next;
+		str[i] = s[start];
+		start++;
+		i++;
 	}
-	ft_printf("%d \n", *(int *)stack1->content);
-	return (0);
+	str[i] = '\0';
+	return (str);
 }
-

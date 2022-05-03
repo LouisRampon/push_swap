@@ -1,33 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lorampon <lorampon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/28 17:13:53 by lorampon          #+#    #+#             */
-/*   Updated: 2022/05/03 15:42:18 by lorampon         ###   ########.fr       */
+/*   Created: 2021/12/01 13:09:41 by lorampon          #+#    #+#             */
+/*   Updated: 2022/05/03 13:15:34 by lorampon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "../includes/libft.h"
 
-int main (int argc, char **argv)
+void	*ft_memmove(void *dest, const void *src, size_t size)
 {
-	t_list	*stack1;
-	t_list	*stack2;
+	size_t			i;
+	unsigned char	*temp1;
+	unsigned char	*temp2;
 
-	if (checkerror(argc, argv))
-		return (0);
-	stack1 = createstack(argc, argv);
-	stack2 = NULL;
-	reverse(&stack1);
-	while (stack1->next)
+	i = 0;
+	temp1 = (unsigned char *)dest;
+	temp2 = (unsigned char *)src;
+	if (temp1 > temp2)
 	{
-		ft_printf("%d \n", *(int *)stack1->content);
-		stack1 = stack1->next;
+		while (i < size)
+		{
+			temp1[size - 1] = temp2[size - 1];
+			size--;
+		}
 	}
-	ft_printf("%d \n", *(int *)stack1->content);
-	return (0);
+	else
+		ft_memcpy(temp1, temp2, size);
+	return (dest);
 }
-

@@ -1,33 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lorampon <lorampon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/28 17:13:53 by lorampon          #+#    #+#             */
-/*   Updated: 2022/05/03 15:42:18 by lorampon         ###   ########.fr       */
+/*   Created: 2021/09/05 15:54:15 by lorampon          #+#    #+#             */
+/*   Updated: 2022/05/03 13:16:19 by lorampon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "../includes/libft.h"
 
-int main (int argc, char **argv)
+size_t	ft_strlcat(char *dest, const char *src, size_t size)
 {
-	t_list	*stack1;
-	t_list	*stack2;
+	size_t	i;
+	size_t	len;
 
-	if (checkerror(argc, argv))
-		return (0);
-	stack1 = createstack(argc, argv);
-	stack2 = NULL;
-	reverse(&stack1);
-	while (stack1->next)
+	i = 0;
+	len = ft_strlen(dest);
+	if ((len > size) || (size == 0))
 	{
-		ft_printf("%d \n", *(int *)stack1->content);
-		stack1 = stack1->next;
+		return (ft_strlen(src) + size);
 	}
-	ft_printf("%d \n", *(int *)stack1->content);
-	return (0);
+	while (src[i] && len + 1 < size)
+	{
+		dest[len] = src[i];
+		i++;
+		len++;
+	}
+	dest[len] = '\0';
+	return (ft_strlen(dest) + ft_strlen(&src[i]));
 }
-

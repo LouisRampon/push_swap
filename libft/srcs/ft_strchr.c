@@ -1,33 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lorampon <lorampon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/28 17:13:53 by lorampon          #+#    #+#             */
-/*   Updated: 2022/05/03 15:42:18 by lorampon         ###   ########.fr       */
+/*   Created: 2021/11/04 11:37:59 by lorampon          #+#    #+#             */
+/*   Updated: 2022/05/03 13:16:07 by lorampon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "../includes/libft.h"
 
-int main (int argc, char **argv)
+char	*ft_strchr(const char *str, int c)
 {
-	t_list	*stack1;
-	t_list	*stack2;
+	int	i;
 
-	if (checkerror(argc, argv))
-		return (0);
-	stack1 = createstack(argc, argv);
-	stack2 = NULL;
-	reverse(&stack1);
-	while (stack1->next)
+	i = 0;
+	while (str[i])
 	{
-		ft_printf("%d \n", *(int *)stack1->content);
-		stack1 = stack1->next;
+		if (str[i] == (char)c)
+			return ((char *)&str[i]);
+		i++;
 	}
-	ft_printf("%d \n", *(int *)stack1->content);
+	if (str[i] == (char)c)
+		return ((char *)&str[i]);
 	return (0);
 }
-

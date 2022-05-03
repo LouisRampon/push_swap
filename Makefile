@@ -6,106 +6,63 @@
 #    By: lorampon <lorampon@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/06 10:43:32 by ltrinchi          #+#    #+#              #
-#    Updated: 2022/04/29 18:10:00 by lorampon         ###   ########.fr        #
+#    Updated: 2022/05/03 15:32:20 by lorampon         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = push_swap
 
-INPUT_PARSING = 
-
-ERROR_HANDLING = 
-
-STACK_HANDLING =
-
-SORTING = 
-
-FILES = \
+SRCS = \
 				main.c \
 				checkerror.c \
-				$(addprefix debug/,$(DEBUG))\
-				$(addprefix input_parsing/,$(INPUT_PARSING))\
-				$(addprefix error_handling/,$(ERROR_HANDLING))\
-				$(addprefix stack_handling/,$(STACK_HANDLING))\
-				$(addprefix sorting/,$(SORTING))
+				createstack.c \
+				sort_functions.c
 
-LIBFT_FILES = \
-				ft_isalpha.c\
-				ft_isdigit.c\
-				ft_isalnum.c\
-				ft_isascii.c\
-				ft_isprint.c\
-				ft_strlen.c\
-				ft_memset.c\
-				ft_bzero.c\
-				ft_memcpy.c\
-				ft_memmove.c\
-				ft_strlcpy.c\
-				ft_strlcat.c\
-				ft_toupper.c\
-				ft_tolower.c\
-				ft_strchr.c\
-				ft_strrchr.c\
-				ft_strncmp.c\
-				ft_memchr.c\
-				ft_memcmp.c\
-				ft_strnstr.c\
-				ft_atoi.c\
-				ft_atoll.c\
-				ft_calloc.c\
-				ft_strdup.c\
-				ft_substr.c\
-				ft_strjoin.c\
-				ft_strtrim.c\
-				ft_split.c\
-				ft_itoa.c\
-				ft_strmapi.c\
-				ft_striteri.c\
-				ft_putchar_fd.c\
-				ft_putstr_fd.c\
-				ft_putendl_fd.c\
-				ft_putnbr_fd.c\
-				ft_putunbr_fd.c\
-				ft_printf.c\
-				ft_print_nbr.c\
-				ft_print_char.c\
-				ft_printf.c \
-				ft_print_nbr.c \
-				ft_print_char.c
+OBJS_NAME = $(SRCS:.c=.o)
 
-SRCS = $(addprefix ./srcs/,$(FILES))
-SRCS_LIBFT = $(addprefix ./libft/,$(LIBFT_FILES))
-OBJ = $(SRCS:.c=.o)
-ARGS = `arg="$(filter-out $@,$(MAKECMDGOALS))" && echo $${arg:-${1}}`
+OBJS = $(addprefix $(OBJ_DIR),$(OBJS_NAME))
+LIB_DIR = libft/
+OBJ_DIR = objs/
+SRC_DIR = srcs/
+
+CC = gcc
+
+RM = rm -rf
 
 FLAGS = -Wall -Wextra -Werror
 
-all: $(NAME)
+all: $(OBJ_DIR) $(NAME)
+	printf "Cest compile"
+	
+$(NAME) : $(OBJS) 
+	make -C $(LIB_DIR)
+	$(CC) -o $(NAME) $(OBJS) -L $(LIB_DIR) -lft
+	echo "##### push_swap compiling finished! #####"
 
-%.o: %.c $(SRCS_LIBFT) ./includes/push_swap.h ./libft/libft.h
-	gcc $(FLAGS) -c $< -o $@
+$(OBJ_DIR):
+	mkdir -p $(OBJ_DIR)
 
-$(NAME) : $(OBJ) 
-	make bonus -C ./libft
-	cp ./libft/libft.a ./
-	gcc $(OBJ) libft.a -o $(NAME)
+$(OBJ_DIR)%.o: $(SRC_DIR)%.c
+	echo "##### Creating" [ $@ ] " #####"
+	gcc $(FLAGS) -o $@ -c $<
 
 clean:
-	make -C ./libft clean
-	/bin/rm -rf $(OBJ)
+	make -C $(LIB_DIR) clean --silent
+	$(RM) $(OBJS) $(OBJ_DIR)
+	echo "##### Removed object files #####"
 
 fclean: clean
-	/bin/rm -rf libftprintf.a
-	/bin/rm -rf libft/libft.a
-	/bin/rm -rf ./libft.a
-	/bin/rm -rf $(NAME)
+	make -C $(LIB_DIR) fclean --silent
+	$(RM) $(NAME)
+	echo "##### Removed binary files #####"
 
 re : fclean all
 
-%:
-    @:
-
-leaks: $(NAME)
-	leaks -atExit -- ./$(NAME) $(call ARGS,defaultstring)
-
+git: fclean
+	git add *
+	git add -u
+	git commit
+	
 .PHONY: all clean fclean leaks re
+
+.SILENT:

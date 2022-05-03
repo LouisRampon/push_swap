@@ -6,7 +6,7 @@
 #    By: lorampon <lorampon@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/06 10:43:32 by ltrinchi          #+#    #+#              #
-#    Updated: 2022/04/29 18:09:34 by lorampon         ###   ########.fr        #
+#    Updated: 2022/05/03 15:33:30 by lorampon         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,46 +49,56 @@ SRCS =	ft_atoi.c \
 		ft_striteri.c \
 		ft_printf.c \
 		ft_print_nbr.c \
-		ft_print_char.c
+		ft_print_char.c \
+		ft_lstnew.c \
+		ft_lstadd_front.c \
+		ft_lstsize.c \
+		ft_lstlast.c \
+		ft_lstadd_back.c \
+		ft_lstdelone.c \
+		ft_lstclear.c \
+		ft_lstiter.c \
+		ft_lstmap.c
 
-SRCSBNS = ft_lstnew.c \
-		  ft_lstadd_front.c \
-		  ft_lstsize.c \
-		  ft_lstlast.c \
-		  ft_lstadd_back.c \
-		  ft_lstdelone.c \
-		  ft_lstclear.c \
-		  ft_lstiter.c \
-		  ft_lstmap.c
+OBJS_NAME = $(SRCS:.c=.o)
 
-OBJS = $(SRCS:.c=.o)
-
-OBJSBS = $(SRCSBNS:.c=.o)
+OBJS = $(addprefix $(OBJ_DIR),$(OBJS_NAME))
+OBJ_DIR = objs/
+SRC_DIR = srcs/
 
 CC = gcc
 
-CFLAGS = -Wall -Wextra -Werror
+FLAGS = -Wall -Wextra -Werror
 
 RM = rm -rf
 
 all: $(NAME)
 
-%.o: %.c libft.h Makefile
-	$(CC) $(CFLAGS) -c $< -o $@
-
-$(NAME): $(OBJS) $(OBJSBS)
+$(NAME): $(OBJS)
 	ar rc $(NAME) $(OBJS)
+	ranlib $(NAME)
+	echo "##### libft created #####"
 
-bonus: $(OBJS) $(OBJSBS)
-	ar rc $(NAME) $(OBJS) $(OBJSBS)
+$(OBJ_DIR)%.o: $(SRC_DIR)%.c
+	mkdir -p $(OBJ_DIR)
+	gcc $(FLAGS) -o $@ -c $<
 
 clean:
-	$(RM) $(OBJS) $(OBJSBS)
+	$(RM) $(OBJS) $(OBJ_DIR)
+	echo "##### Removed libft object files #####"
 
 fclean: clean
 	$(RM) $(NAME)
+	echo "##### Removed libft.a #####"
 
 re: fclean all
 
+git: fclean
+	git add *
+	git add -u
+	git commit
+
 .PHONY: all bonus clean fclean re
+
+.SILENT:
 

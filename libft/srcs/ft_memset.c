@@ -1,33 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lorampon <lorampon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/28 17:13:53 by lorampon          #+#    #+#             */
-/*   Updated: 2022/05/03 15:42:18 by lorampon         ###   ########.fr       */
+/*   Created: 2021/11/04 13:43:14 by lorampon          #+#    #+#             */
+/*   Updated: 2022/05/03 13:15:38 by lorampon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "../includes/libft.h"
 
-int main (int argc, char **argv)
+void	*ft_memset(void *ptr, int value, size_t size)
 {
-	t_list	*stack1;
-	t_list	*stack2;
+	size_t			i;
+	unsigned char	*temp;
 
-	if (checkerror(argc, argv))
-		return (0);
-	stack1 = createstack(argc, argv);
-	stack2 = NULL;
-	reverse(&stack1);
-	while (stack1->next)
+	i = 0;
+	temp = (unsigned char *)ptr;
+	while (i < size)
 	{
-		ft_printf("%d \n", *(int *)stack1->content);
-		stack1 = stack1->next;
+		temp[i] = value;
+		i++;
 	}
-	ft_printf("%d \n", *(int *)stack1->content);
-	return (0);
+	return (temp);
 }
-

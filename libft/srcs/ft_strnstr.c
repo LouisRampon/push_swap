@@ -1,33 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lorampon <lorampon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/28 17:13:53 by lorampon          #+#    #+#             */
-/*   Updated: 2022/05/03 15:42:18 by lorampon         ###   ########.fr       */
+/*   Created: 2021/11/04 11:45:54 by lorampon          #+#    #+#             */
+/*   Updated: 2022/05/03 13:16:32 by lorampon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "../includes/libft.h"
 
-int main (int argc, char **argv)
+char	*ft_strnstr(const char *big, const char *little, size_t size)
 {
-	t_list	*stack1;
-	t_list	*stack2;
+	size_t	i;
+	size_t	j;
 
-	if (checkerror(argc, argv))
-		return (0);
-	stack1 = createstack(argc, argv);
-	stack2 = NULL;
-	reverse(&stack1);
-	while (stack1->next)
+	i = 0;
+	if (!ft_strlen(little))
+		return ((char *)big);
+	while (big[i] && i < size)
 	{
-		ft_printf("%d \n", *(int *)stack1->content);
-		stack1 = stack1->next;
+		j = 0;
+		while (big[i + j] == little[j] && i + j < size)
+		{
+			if (!little[j + 1])
+				return ((char *)&big[i]);
+			j++;
+		}
+		i++;
 	}
-	ft_printf("%d \n", *(int *)stack1->content);
 	return (0);
 }
-

@@ -1,33 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   createstack.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lorampon <lorampon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/28 17:13:53 by lorampon          #+#    #+#             */
-/*   Updated: 2022/05/03 15:42:18 by lorampon         ###   ########.fr       */
+/*   Created: 2022/05/03 14:24:17 by lorampon          #+#    #+#             */
+/*   Updated: 2022/05/03 14:30:44 by lorampon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-int main (int argc, char **argv)
+t_list	*createstack(int argc, char **argv)
 {
-	t_list	*stack1;
-	t_list	*stack2;
+	int		i;
+	t_list	*temp_struct;
+	t_list	*head;
+	int		*ptr;
 
-	if (checkerror(argc, argv))
-		return (0);
-	stack1 = createstack(argc, argv);
-	stack2 = NULL;
-	reverse(&stack1);
-	while (stack1->next)
+	i = 1;
+	head = NULL;
+	while (i < argc)
 	{
-		ft_printf("%d \n", *(int *)stack1->content);
-		stack1 = stack1->next;
+		ptr = malloc(sizeof(int));
+		*ptr = ft_atoi(argv[i]);
+		temp_struct = ft_lstnew(ptr);
+		ft_lstadd_back(&head, temp_struct);
+		i++;
 	}
-	ft_printf("%d \n", *(int *)stack1->content);
-	return (0);
+	return (head);
 }
-

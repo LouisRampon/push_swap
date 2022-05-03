@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   checkerror.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lorampon <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: lorampon <lorampon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/28 17:29:06 by lorampon          #+#    #+#             */
-/*   Updated: 2021/12/28 18:25:13 by lorampon         ###   ########lyon.fr   */
+/*   Updated: 2022/05/03 14:06:59 by lorampon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
-#include "../libft/libft.h"
 
 int	checkerror(int argc, char **argv)
 {

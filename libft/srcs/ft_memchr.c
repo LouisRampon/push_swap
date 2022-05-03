@@ -1,33 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lorampon <lorampon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/28 17:13:53 by lorampon          #+#    #+#             */
-/*   Updated: 2022/05/03 15:42:18 by lorampon         ###   ########.fr       */
+/*   Created: 2021/12/01 13:20:22 by lorampon          #+#    #+#             */
+/*   Updated: 2022/05/03 13:15:28 by lorampon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "../includes/libft.h"
 
-int main (int argc, char **argv)
+void	*ft_memchr(const void *mem, int c, size_t size)
 {
-	t_list	*stack1;
-	t_list	*stack2;
+	unsigned char	*ptr;
+	size_t			i;
 
-	if (checkerror(argc, argv))
-		return (0);
-	stack1 = createstack(argc, argv);
-	stack2 = NULL;
-	reverse(&stack1);
-	while (stack1->next)
+	ptr = (unsigned char *)mem;
+	i = 0;
+	while (i < size)
 	{
-		ft_printf("%d \n", *(int *)stack1->content);
-		stack1 = stack1->next;
+		if (ptr[i] == (unsigned char)c)
+			return ((void *)ptr + i);
+		i++;
 	}
-	ft_printf("%d \n", *(int *)stack1->content);
 	return (0);
 }
-

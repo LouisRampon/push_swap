@@ -1,33 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lorampon <lorampon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/28 17:13:53 by lorampon          #+#    #+#             */
-/*   Updated: 2022/05/03 15:42:18 by lorampon         ###   ########.fr       */
+/*   Created: 2021/09/04 17:36:21 by lorampon          #+#    #+#             */
+/*   Updated: 2022/05/03 13:16:29 by lorampon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "../includes/libft.h"
 
-int main (int argc, char **argv)
+int	ft_strncmp(const char *s1, const char *s2, size_t length)
 {
-	t_list	*stack1;
-	t_list	*stack2;
+	size_t	i;
+	int		a;
 
-	if (checkerror(argc, argv))
-		return (0);
-	stack1 = createstack(argc, argv);
-	stack2 = NULL;
-	reverse(&stack1);
-	while (stack1->next)
+	i = 0;
+	while (i < length && (s1[i] || s2[i]))
 	{
-		ft_printf("%d \n", *(int *)stack1->content);
-		stack1 = stack1->next;
+		if (s1[i] < s2[i] || s1[i] > s2[i])
+		{
+			a = (unsigned char)s1[i] - (unsigned char)s2[i];
+			return (a);
+		}
+		i++;
 	}
-	ft_printf("%d \n", *(int *)stack1->content);
 	return (0);
 }
-
