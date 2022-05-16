@@ -6,7 +6,7 @@
 /*   By: lorampon <lorampon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 14:29:41 by lorampon          #+#    #+#             */
-/*   Updated: 2022/05/03 15:50:33 by lorampon         ###   ########.fr       */
+/*   Updated: 2022/05/04 17:27:25 by lorampon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,16 @@ void	swap(t_list *head)
 	head->next->content = ptr;
 }
 
-void	push(t_list *list1, t_list *list2)
+void	push(t_list **list1, t_list **list2)
 {
-	if (!list1)
+	t_list *temp;
+
+	temp = *list2;
+	if (!temp)
 		return ;
-	list1->next = list2;
+	*list2 = temp->next;
+	temp->next = *list1;
+	*list1 = temp;
 }
 
 void	rotate(t_list **lst)

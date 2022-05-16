@@ -6,7 +6,7 @@
 #    By: lorampon <lorampon@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/06 10:43:32 by ltrinchi          #+#    #+#              #
-#    Updated: 2022/05/03 15:32:20 by lorampon         ###   ########.fr        #
+#    Updated: 2022/05/04 17:33:32 by lorampon         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ SRCS = \
 				main.c \
 				checkerror.c \
 				createstack.c \
-				sort_functions.c
+				sort_functions.c 
 
 OBJS_NAME = $(SRCS:.c=.o)
 
