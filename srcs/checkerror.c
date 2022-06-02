@@ -6,7 +6,7 @@
 /*   By: lorampon <lorampon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/28 17:29:06 by lorampon          #+#    #+#             */
-/*   Updated: 2022/05/04 17:04:30 by lorampon         ###   ########.fr       */
+/*   Updated: 2022/06/01 14:30:19 by lorampon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int	checkargv(int argc, char **argv)
 	int	i;
 	int	j;
 
-	i = 1;
+	i = 0;
 	while (i < argc)
 	{
 		j = 0;
@@ -59,7 +59,7 @@ int	checkduplicate(int argc, char **argv)
 	int	i;
 	int	j;
 
-	i = 1;
+	i = 0;
 	while (i < argc)
 	{
 		j = i + 1;

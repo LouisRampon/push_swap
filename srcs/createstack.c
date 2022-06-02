@@ -6,7 +6,7 @@
 /*   By: lorampon <lorampon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 14:24:17 by lorampon          #+#    #+#             */
-/*   Updated: 2022/05/03 14:30:44 by lorampon         ###   ########.fr       */
+/*   Updated: 2022/06/01 14:30:59 by lorampon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ t_list	*createstack(int argc, char **argv)
 	t_list	*head;
 	int		*ptr;
 
-	i = 1;
+	i = 0;
 	head = NULL;
 	while (i < argc)
 	{
