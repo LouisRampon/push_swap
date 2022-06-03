@@ -6,11 +6,12 @@
 /*   By: lorampon <lorampon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/10 11:50:33 by lorampon          #+#    #+#             */
-/*   Updated: 2022/05/03 13:15:00 by lorampon         ###   ########.fr       */
+/*   Updated: 2022/06/03 15:52:40 by lorampon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libft.h"
+
 long	ft_pos(int n)
 {
 	long	nb;

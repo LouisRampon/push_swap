@@ -6,19 +6,18 @@
 /*   By: lorampon <lorampon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/28 17:13:53 by lorampon          #+#    #+#             */
-/*   Updated: 2022/06/01 18:07:47 by lorampon         ###   ########.fr       */
+/*   Updated: 2022/06/03 16:07:24 by lorampon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-int main (int argc, char **argv)
+int	main(int argc, char **argv)
 {
-	char **list;
+	char	**list;
 	t_list	*head;
 	t_list	*b;
-	int i;
-	
+	int		i;
 
 	if (argc == 2)
 		list = ft_split(argv[1], ' ');
@@ -31,12 +30,34 @@ int main (int argc, char **argv)
 		return (0);
 	head = createstack(i, list);
 	sorter(&head, &b);
-	while (head->next)
-	{
-	 	ft_printf("%d \n", *(int *)head->content);
-		head = head->next;
-	}
-	ft_printf("%d \n", *(int *)head->content);
+	ft_freelist(head);
+	if (argc == 2)
+		ft_freestack(list);
 	return (0);
 }
 
+void	ft_freelist(t_list *head)
+{
+	t_list	*tmp;
+
+	while (head)
+	{
+		tmp = head;
+		head = head->next;
+		free(tmp->content);
+		free(tmp);
+	}
+}
+
+void	ft_freestack(char **list)
+{
+	int		i;
+
+	i = 0;
+	while (list[i])
+	{
+		free(list[i]);
+		i++;
+	}
+	free(list);
+}

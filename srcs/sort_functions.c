@@ -6,7 +6,7 @@
 /*   By: lorampon <lorampon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 14:29:41 by lorampon          #+#    #+#             */
-/*   Updated: 2022/05/04 17:27:25 by lorampon         ###   ########.fr       */
+/*   Updated: 2022/06/03 15:51:23 by lorampon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	swap(t_list *head)
 {
-	void *ptr;
+	void	*ptr;
 
 	ptr = head->content;
 	head->content = head->next->content;
@@ -23,7 +23,7 @@ void	swap(t_list *head)
 
 void	push(t_list **list1, t_list **list2)
 {
-	t_list *temp;
+	t_list	*temp;
 
 	temp = *list2;
 	if (!temp)
@@ -35,9 +35,9 @@ void	push(t_list **list1, t_list **list2)
 
 void	rotate(t_list **lst)
 {
-	t_list *head;
-	t_list *tail;
-	
+	t_list	*head;
+	t_list	*tail;
+
 	head = *lst;
 	tail = ft_lstlast(*lst);
 	*lst = (*lst)->next;
@@ -61,4 +61,12 @@ void	reverse(t_list **lst)
 	}
 	(*lst)->next = NULL;
 	*lst = tail;
+}
+
+int	ft_compare(const char *s1, const char *s2)
+{
+	if (ft_atoi(s1) > ft_atoi(s2))
+		return (1);
+	else
+		return (0);
 }

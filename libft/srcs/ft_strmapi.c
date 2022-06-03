@@ -6,11 +6,12 @@
 /*   By: lorampon <lorampon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/01 12:01:13 by lorampon          #+#    #+#             */
-/*   Updated: 2022/05/03 13:16:27 by lorampon         ###   ########.fr       */
+/*   Updated: 2022/06/03 15:51:59 by lorampon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libft.h"
+
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
 	unsigned int	i;

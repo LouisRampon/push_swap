@@ -6,7 +6,7 @@
 /*   By: lorampon <lorampon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/05 16:28:39 by lorampon          #+#    #+#             */
-/*   Updated: 2022/05/03 13:15:48 by lorampon         ###   ########.fr       */
+/*   Updated: 2022/06/03 15:52:27 by lorampon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,4 +61,3 @@ int	ft_printf(const char *str, ...)
 	va_end(param);
 	return (size);
 }
-
