@@ -6,13 +6,13 @@
 /*   By: lorampon <lorampon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/06 11:44:10 by lorampon          #+#    #+#             */
-/*   Updated: 2022/05/03 13:14:35 by lorampon         ###   ########.fr       */
+/*   Updated: 2022/06/09 13:43:46 by lorampon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libft.h"
 
-int	ft_atoi(const char *str)
+long int	ft_atoi(const char *str)
 {
 	int			i;
 	int			j;

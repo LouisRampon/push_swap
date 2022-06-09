@@ -6,7 +6,7 @@
 /*   By: lorampon <lorampon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/28 17:29:06 by lorampon          #+#    #+#             */
-/*   Updated: 2022/06/01 14:30:19 by lorampon         ###   ########.fr       */
+/*   Updated: 2022/06/09 13:57:06 by lorampon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,39 @@
 
 int	checkerror(int argc, char **argv)
 {
-	if (argc <= 1)
+	if (argc == 1)
 	{
-		ft_printf("Aucun arguments");
+		ft_printf("Error\n");
 		return (1);
 	}
 	if (checkargv(argc, argv))
 	{
-		ft_printf("Arguments incorrect");
+		ft_printf("Error\n");
 		return (1);
 	}
 	if (checkduplicate(argc, argv))
 	{
-		ft_printf("Arguement en double");
+		ft_printf("Error\n");
 		return (1);
+	}
+	if (check_intmax(argv))
+	{
+		ft_printf("Error\n");
+		return (1);
+	}
+	return (0);
+}
+
+int	check_intmax(char **argv)
+{
+	int	i;
+
+	i = 0;
+	while (argv[i])
+	{
+		if (ft_atoi(argv[i]) > 2147483647 || ft_atoi(argv[i]) < -2147483647)
+			return (1);
+		i++;
 	}
 	return (0);
 }
