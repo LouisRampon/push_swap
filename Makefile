@@ -6,7 +6,7 @@
 #    By: lorampon <lorampon@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/06 10:43:32 by ltrinchi          #+#    #+#              #
-#    Updated: 2022/06/01 11:11:41 by lorampon         ###   ########.fr        #
+#    Updated: 2022/06/08 17:08:08 by lorampon         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,9 @@ SRCS = \
 				checkerror.c \
 				createstack.c \
 				sort_functions.c \
-				sorter.c
+				main_sorter.c \
+				small_sort.c \
+				ft_double_push.c
 
 OBJS_NAME = $(SRCS:.c=.o)
 
@@ -30,12 +32,12 @@ CC = gcc
 
 RM = rm -rf
 
-FLAGS = -Wall -Wextra -Werror
+FLAGS = -Wall -Wextra -Werror -g
 
 all: $(OBJ_DIR) $(NAME)
 	printf "Cest compile"
 	
-$(NAME) : $(OBJS) 
+$(NAME) : $(OBJS) includes/push_swap.h Makefile
 	make -C $(LIB_DIR)
 	$(CC) -o $(NAME) $(OBJS) -L $(LIB_DIR) -lft
 	echo "##### push_swap compiling finished! #####"

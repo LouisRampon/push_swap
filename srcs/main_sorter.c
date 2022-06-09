@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sorter.c                                           :+:      :+:    :+:   */
+/*   main_sorter.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lorampon <lorampon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/01 11:11:28 by lorampon          #+#    #+#             */
-/*   Updated: 2022/06/03 16:26:48 by lorampon         ###   ########.fr       */
+/*   Updated: 2022/06/08 17:40:41 by lorampon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,61 +16,64 @@ void	sorter(t_list **stack1, t_list **stack2)
 {
 	t_list	*a;
 	t_list	*b;
-	int		size;
-	int		i;
 	int		sort;
 
 	b = *stack2;
 	a = *stack1;
-	i = 0;
 	sort = ft_sort_nbr(stack1);
-	if (sort > 3)
+	if (ft_lstsize(a) == 3)
+		ft_three_sort(&a);
+	else if (ft_lstsize(a) == 5)
+		ft_five_sort(&a, &b);
+	else
 	{
-		while (i < sort)
-		{
-			ft_prime_sort(&a, &b, i);
-			size = ft_lstsize(b);
-			while (size > 0)
-			{
-				push(&a, &b);
-				write(1, "pa\n", 3);
-				size--;
-			}
-			i++;
-		}
+		ft_big_sort(&a, &b, sort);
 		*stack1 = a;
 	}
-	else
-		ft_small_sort(&a, &b);
+	ft_freelist(a);
+}
+
+void	ft_big_sort(t_list **stack1, t_list **stack2, int sort)
+{
+	int		i;
+	int		size;
+
+	i = 0;
+	while (i < sort)
+	{
+		ft_prime_sort(stack1, stack2, i);
+		size = ft_lstsize((*stack2));
+		while (size > 0)
+		{
+			push(stack1, stack2);
+			write(1, "pa\n", 3);
+			size--;
+		}
+		i++;
+	}
 }
 
 void	ft_prime_sort(t_list **stack1, t_list **stack2, int exp)
 {
-	t_list	*a;
-	t_list	*b;
 	int		size;
 	char	*temp;
 
-	a = *stack1;
-	b = *stack2;
-	size = ft_lstsize(a);
+	size = ft_lstsize((*stack1));
 	while (size > 0)
 	{
-		temp = a->content;
+		temp = (*stack1)->content;
 		if (temp[31 - exp] == '1')
 		{
-			rotate(&a);
+			rotate(stack1);
 			write(1, "ra\n", 3);
 		}
 		else
 		{
-			push(&b, &a);
+			push(stack2, stack1);
 			write(1, "pb\n", 3);
 		}
 		size--;
 	}
-	*stack1 = a;
-	*stack2 = b;
 }
 
 int	ft_sort_nbr(t_list **head)
@@ -78,36 +81,19 @@ int	ft_sort_nbr(t_list **head)
 	int		max;
 	int		i;
 	char	*str;
-	t_list	*a;
 
-	a = *head;
 	max = 0;
-	while (a)
+	while ((*head))
 	{
 		i = 0;
-		str = a->content;
+		str = (*head)->content;
 		while (str[i])
 		{
 			if (str[i] == '1' && max < 32 - i)
 				max = 32 - i;
 			i++;
 		}
-		a = a->next;
+		(*head) = (*head)->next;
 	}
 	return (max);
-}
-
-void	ft_small_sort(t_list **stack1, t_list **stack2)
-{
-	t_list	*a;
-	t_list	*b;
-	char	*str;
-	int		i;
-
-	b = *stack2;
-	a = *stack1;
-	while(a->next)
-	{
-		
-	}
 }

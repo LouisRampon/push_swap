@@ -6,7 +6,7 @@
 #    By: lorampon <lorampon@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/06 10:43:32 by ltrinchi          #+#    #+#              #
-#    Updated: 2022/05/03 15:33:30 by lorampon         ###   ########.fr        #
+#    Updated: 2022/06/08 16:10:33 by lorampon         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -58,7 +58,11 @@ SRCS =	ft_atoi.c \
 		ft_lstdelone.c \
 		ft_lstclear.c \
 		ft_lstiter.c \
-		ft_lstmap.c
+		ft_lstmap.c \
+		ft_itob.c \
+		ft_btoi.c \
+		ft_revstr.c 
+
 
 OBJS_NAME = $(SRCS:.c=.o)
 

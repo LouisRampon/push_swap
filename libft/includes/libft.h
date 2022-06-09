@@ -6,7 +6,7 @@
 /*   By: lorampon <lorampon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/10 12:56:56 by lorampon          #+#    #+#             */
-/*   Updated: 2022/04/29 18:07:31 by lorampon         ###   ########.fr       */
+/*   Updated: 2022/06/08 16:10:18 by lorampon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ int		ft_isascii(int c);
 int		ft_isdigit(int c);
 int		ft_isprint(int c);
 char	*ft_itoa(int n);
+char	*ft_itob(int nbr);
+int		ft_btoi(void *ptr);
 void	*ft_memset(void *ptr, int value, size_t size);
 int		ft_memcmp(const void *ptr1, const void *ptr2, size_t size);
 void	*ft_memcpy(void	*dest, const void *src, size_t size);
@@ -47,6 +49,7 @@ size_t	ft_strlen(const char *str);
 int		ft_strncmp(const char *s1, const char *s2, size_t length);
 char	*ft_strnstr(const char *big, const char *little, size_t size);
 char	*ft_strrchr(const char *str, int c);
+void	ft_revstr(char *str);
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 void	ft_striteri(char *s, void (*f)(unsigned int, char *));
 char	*ft_substr(char const *s, unsigned int start, size_t len);
