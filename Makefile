@@ -6,7 +6,7 @@
 #    By: lorampon <lorampon@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/06 10:43:32 by ltrinchi          #+#    #+#              #
-#    Updated: 2022/06/08 17:08:08 by lorampon         ###   ########.fr        #
+#    Updated: 2022/06/09 16:01:45 by lorampon         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,13 +34,16 @@ RM = rm -rf
 
 FLAGS = -Wall -Wextra -Werror -g
 
-all: $(OBJ_DIR) $(NAME)
+all: rcs $(OBJ_DIR) $(NAME)
 	printf "Cest compile"
-	
-$(NAME) : $(OBJS) includes/push_swap.h Makefile
+
+$(NAME) : $(OBJS) includes/push_swap.h Makefile libft/libft.a
 	make -C $(LIB_DIR)
 	$(CC) -o $(NAME) $(OBJS) -L $(LIB_DIR) -lft
 	echo "##### push_swap compiling finished! #####"
+
+rcs: 
+	make -C $(LIB_DIR)
 
 $(OBJ_DIR):
 	mkdir -p $(OBJ_DIR)

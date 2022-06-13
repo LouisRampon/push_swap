@@ -6,7 +6,7 @@
 /*   By: lorampon <lorampon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/28 17:13:53 by lorampon          #+#    #+#             */
-/*   Updated: 2022/06/08 17:53:36 by lorampon         ###   ########.fr       */
+/*   Updated: 2022/06/13 14:16:44 by lorampon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,11 @@ int	main(int argc, char **argv)
 	while (list[i])
 		i++;
 	if (checkerror(i, list))
+	{
+		if(argc == 2)
+			ft_freestack(list);
 		return (0);
+	}
 	head = createstack(i, list, argc);
 	sorter(&head, &b);
 	return (0);

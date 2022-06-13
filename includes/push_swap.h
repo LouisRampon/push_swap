@@ -6,7 +6,7 @@
 /*   By: lorampon <lorampon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/28 17:14:15 by lorampon          #+#    #+#             */
-/*   Updated: 2022/06/09 13:46:31 by lorampon         ###   ########.fr       */
+/*   Updated: 2022/06/09 16:37:34 by lorampon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,16 +30,19 @@ void	push(t_list **list1, t_list **list2);
 void	rotate(t_list **lst);
 void	reverse(t_list **lst);
 void	ft_double_push(t_list **stack1, t_list **stack2);
+int		ft_rotate_or_reverse(t_list **a, int tofind);
 
 void	sorter(t_list **stack1, t_list **stack2);
 void	ft_big_sort(t_list **stack1, t_list **stack2, int size);
 void	ft_prime_sort(t_list **stack1, t_list **stack2, int exp);
 int		ft_sort_nbr(t_list **head);
+int		ft_is_sort(t_list **a);
 
 void	ft_five_sort(t_list **stack1, t_list **stack2);
 void	ft_five_sort_loop(t_list **stack1, t_list **stack2, int tofind);
 void	ft_three_sort(t_list **stack1);
 void	ft_three_sort_next(int tmp1, int tmp2, int tmp3, t_list **stack1);
+void	ft_two_sort(t_list **a);
 
 void	ft_freelist(t_list *head);
 void	ft_freestack(char **list);

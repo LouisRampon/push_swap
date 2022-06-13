@@ -6,7 +6,7 @@
 #    By: lorampon <lorampon@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/06 10:43:32 by ltrinchi          #+#    #+#              #
-#    Updated: 2022/06/08 16:10:33 by lorampon         ###   ########.fr        #
+#    Updated: 2022/06/09 15:59:42 by lorampon         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -78,7 +78,7 @@ RM = rm -rf
 
 all: $(NAME)
 
-$(NAME): $(OBJS)
+$(NAME): $(OBJS) includes/libft.h Makefile
 	ar rc $(NAME) $(OBJS)
 	ranlib $(NAME)
 	echo "##### libft created #####"

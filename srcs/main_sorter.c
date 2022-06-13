@@ -6,7 +6,7 @@
 /*   By: lorampon <lorampon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/01 11:11:28 by lorampon          #+#    #+#             */
-/*   Updated: 2022/06/08 17:40:41 by lorampon         ###   ########.fr       */
+/*   Updated: 2022/06/09 16:58:34 by lorampon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,15 @@ void	sorter(t_list **stack1, t_list **stack2)
 	b = *stack2;
 	a = *stack1;
 	sort = ft_sort_nbr(stack1);
+	if (ft_is_sort(&a))
+	{
+		ft_freelist(a);
+		return ;
+	}
 	if (ft_lstsize(a) == 3)
 		ft_three_sort(&a);
+	else if (ft_lstsize(a) == 2)
+		ft_two_sort(&a);
 	else if (ft_lstsize(a) == 5)
 		ft_five_sort(&a, &b);
 	else
@@ -96,4 +103,23 @@ int	ft_sort_nbr(t_list **head)
 		(*head) = (*head)->next;
 	}
 	return (max);
+}
+
+int	ft_is_sort(t_list **a)
+{
+	t_list	*head;
+
+	head = *a;
+	while ((*a)->next)
+	{
+		if (ft_btoi((*a)->content) < ft_btoi((*a)->next->content))
+			(*a) = (*a)->next;
+		else
+		{
+			*a = head;
+			return (0);
+		}
+	}
+	*a = head;
+	return (1);
 }

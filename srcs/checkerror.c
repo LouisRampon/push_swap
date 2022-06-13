@@ -6,7 +6,7 @@
 /*   By: lorampon <lorampon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/28 17:29:06 by lorampon          #+#    #+#             */
-/*   Updated: 2022/06/09 13:57:06 by lorampon         ###   ########.fr       */
+/*   Updated: 2022/06/13 14:14:30 by lorampon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ int	checkerror(int argc, char **argv)
 {
 	if (argc == 1)
 	{
-		ft_printf("Error\n");
 		return (1);
 	}
 	if (checkargv(argc, argv))
@@ -40,12 +39,23 @@ int	checkerror(int argc, char **argv)
 int	check_intmax(char **argv)
 {
 	int	i;
+	int	j;
 
 	i = 0;
+	j = 0;
 	while (argv[i])
 	{
-		if (ft_atoi(argv[i]) > 2147483647 || ft_atoi(argv[i]) < -2147483647)
+		if (ft_atoi(argv[i]) > 2147483647 || ft_atoi(argv[i]) < -2147483648)
 			return (1);
+		if (argv[i][0] == '-' && argv[i][1] == '0')
+		{
+			while (argv[j])
+			{
+				if (argv[j][0] == '0')
+					return(1);
+				j++;
+			}		
+		}
 		i++;
 	}
 	return (0);
