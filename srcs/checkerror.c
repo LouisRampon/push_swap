@@ -6,7 +6,7 @@
 /*   By: lorampon <lorampon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/28 17:29:06 by lorampon          #+#    #+#             */
-/*   Updated: 2022/06/13 14:14:30 by lorampon         ###   ########.fr       */
+/*   Updated: 2022/06/23 14:21:45 by lorampon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,23 +14,25 @@
 
 int	checkerror(int argc, char **argv)
 {
-	if (argc == 1)
-	{
-		return (1);
-	}
 	if (checkargv(argc, argv))
 	{
-		ft_printf("Error\n");
+		ft_putstr_fd("Error\n", 2);
 		return (1);
 	}
 	if (checkduplicate(argc, argv))
 	{
-		ft_printf("Error\n");
+		ft_putstr_fd("Error\n", 2);
 		return (1);
 	}
 	if (check_intmax(argv))
 	{
-		ft_printf("Error\n");
+		ft_putstr_fd("Error\n", 2);
+		return (1);
+	}
+	if (argc == 1)
+	{
+		if (ft_atoi(argv[0]) > 2147483647 || ft_atoi(argv[0]) < -2147483648)
+			ft_putstr_fd("Error\n", 2);
 		return (1);
 	}
 	return (0);
@@ -52,7 +54,7 @@ int	check_intmax(char **argv)
 			while (argv[j])
 			{
 				if (argv[j][0] == '0')
-					return(1);
+					return (1);
 				j++;
 			}		
 		}
@@ -72,6 +74,8 @@ int	checkargv(int argc, char **argv)
 		j = 0;
 		if (argv[i][j] == '-')
 			j++;
+		if (!argv[i][j])
+			return (1);
 		while (argv[i][j])
 		{
 			if (!ft_isdigit((int)argv[i][j]))

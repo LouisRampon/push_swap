@@ -6,7 +6,7 @@
 /*   By: lorampon <lorampon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/28 17:13:53 by lorampon          #+#    #+#             */
-/*   Updated: 2022/06/13 14:16:44 by lorampon         ###   ########.fr       */
+/*   Updated: 2022/06/23 14:22:02 by lorampon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ int	main(int argc, char **argv)
 	t_list	*b;
 	int		i;
 
+	if (argc == 1 || (argc == 2 && !argv[1][0]))
+		return (0);
 	if (argc == 2)
 		list = ft_split(argv[1], ' ');
 	else
@@ -28,7 +30,7 @@ int	main(int argc, char **argv)
 		i++;
 	if (checkerror(i, list))
 	{
-		if(argc == 2)
+		if (argc == 2)
 			ft_freestack(list);
 		return (0);
 	}

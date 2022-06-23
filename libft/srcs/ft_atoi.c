@@ -6,7 +6,7 @@
 /*   By: lorampon <lorampon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/06 11:44:10 by lorampon          #+#    #+#             */
-/*   Updated: 2022/06/09 13:43:46 by lorampon         ###   ########.fr       */
+/*   Updated: 2022/06/23 14:04:09 by lorampon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ long int	ft_atoi(const char *str)
 	j = 1;
 	while ((str[i] > 8 && str[i] < 14) || str[i] == ' ')
 		i++;
-	if (!ft_isdigit(str[i]) && !(str[i] == '-') && !(str[i] == '+'))
+	if (!ft_isdigit(str[i]) && !(str[i] == '-') && !(str[i] == '-'))
 		return (0);
 	if (str[i] == '-' || str[i] == '+')
 	{
