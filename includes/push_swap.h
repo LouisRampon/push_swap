@@ -6,7 +6,7 @@
 /*   By: lorampon <lorampon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/28 17:14:15 by lorampon          #+#    #+#             */
-/*   Updated: 2022/06/09 16:37:34 by lorampon         ###   ########.fr       */
+/*   Updated: 2022/09/19 13:32:16 by lorampon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ int		checkerror(int argc, char **argv);
 int		checkargv(int argc, char **argv);
 int		checkduplicate(int argc, char **argv);
 int		check_intmax(char **argv);
+int		ft_basic_error(int argc, char **argv);
 
 t_list	*createstack(int argc, char **argv, int j);
 char	**ft_simplify_stack(int argc, char **argv);

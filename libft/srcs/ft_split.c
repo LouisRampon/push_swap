@@ -6,11 +6,12 @@
 /*   By: lorampon <lorampon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/16 10:32:16 by lorampon          #+#    #+#             */
-/*   Updated: 2022/05/03 13:16:05 by lorampon         ###   ########.fr       */
+/*   Updated: 2022/09/19 12:59:08 by lorampon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libft.h"
+#include <stdio.h>
 
 size_t	ft_nb_string(const char *str, char c)
 {
